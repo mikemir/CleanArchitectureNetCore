@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CleanArchitecture.NetCore.Dtos\CleanArchitecture.NetCore.Dtos.csproj" />
     <ProjectReference Include="..\CleanArchitecture.NetCore.UseCases\CleanArchitecture.NetCore.UseCases.csproj" />
   </ItemGroup>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArchitecture.NetCore.Application.WebApi.Models.Users.Requests;
+using CleanArchitecture.NetCore.Dtos;
 using CleanArchitecture.NetCore.InterfaceAdapters.Gateways;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,9 +37,17 @@ namespace CleanArchitecture.NetCore.Application.WebApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] UsuarioRequest usuario)
         {
+            ActionResult result = null;
             if (!ModelState.IsValid) BadRequest(usuario);
 
-            return Ok();
+            var dto = new UsuarioDto { Usuario = usuario.Usuario, Clave = usuario.Clave };
+            var response =_usuarioGateway.CrearUsuario(dto);
+
+            result = response.Success 
+                    ? Ok(response.Message) 
+                    : StatusCode(500, response.Message);
+
+            return result;
         }
 
         // PUT api/values/5
