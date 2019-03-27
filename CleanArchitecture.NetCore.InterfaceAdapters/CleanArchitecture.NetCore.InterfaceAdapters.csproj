@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Notifies\" />
     <Folder Include="Presenters\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
