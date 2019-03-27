@@ -1,5 +1,5 @@
 ﻿using CleanArchitecture.NetCore.Dtos;
-using CleanArchitecture.NetCore.Dtos.Response;
+using CleanArchitecture.NetCore.Dtos.Responses;
 using System;
 using System.Collections.Generic;
 using System.Text;

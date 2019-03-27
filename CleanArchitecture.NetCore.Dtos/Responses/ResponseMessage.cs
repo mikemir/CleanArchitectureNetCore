@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanArchitecture.NetCore.Dtos.Response
+namespace CleanArchitecture.NetCore.Dtos.Responses
 {
     public class ResponseMessage
     {

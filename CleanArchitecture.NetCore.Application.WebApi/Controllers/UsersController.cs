@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CleanArchitecture.NetCore.Application.WebApi.Models.Users.Requests;
 using CleanArchitecture.NetCore.Dtos;
+using CleanArchitecture.NetCore.Dtos.Requests;
 using CleanArchitecture.NetCore.InterfaceAdapters.Gateways;
+using CleanArchitecture.NetCore.InterfaceAdapters.Mapping;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.NetCore.Application.WebApi.Controllers
@@ -14,10 +15,12 @@ namespace CleanArchitecture.NetCore.Application.WebApi.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUsuarioGateway _usuarioGateway;
+        private readonly IParser _parser;
 
-        public UsersController(IUsuarioGateway usuarioGateway)
+        public UsersController(IUsuarioGateway usuarioGateway, IParser parser)
         {
             _usuarioGateway = usuarioGateway ?? throw new ArgumentNullException(nameof(usuarioGateway));
+            _parser = parser ?? throw new ArgumentNullException(nameof(parser));
         }
         // GET api/values
         [HttpGet]
@@ -40,7 +43,7 @@ namespace CleanArchitecture.NetCore.Application.WebApi.Controllers
             ActionResult result = null;
             if (!ModelState.IsValid) BadRequest(usuario);
 
-            var dto = new UsuarioDto { Alias = usuario.Usuario, Clave = usuario.Clave };
+            var dto = _parser.Parse<UsuarioDto, UsuarioRequest>(usuario);
             var response =_usuarioGateway.CrearUsuario(dto);
 
             result = response.Success 

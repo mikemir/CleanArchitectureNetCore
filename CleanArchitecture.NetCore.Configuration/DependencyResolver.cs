@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
+using System.Reflection;
+using CleanArchitecture.NetCore.InterfaceAdapters.Mapping;
+using CleanArchitecture.NetCore.Infrastructure.Mapping;
 
 namespace CleanArchitecture.NetCore.Configuration
 {
@@ -19,9 +23,11 @@ namespace CleanArchitecture.NetCore.Configuration
 
         public static IServiceCollection ConfigInfrastructure(this IServiceCollection services)
         {
+            services.AddAutoMapper();
             var connectionString = @"Server=(localdb)\mssqllocaldb;Database=USERSDB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<UsuarioDbContext>(opts => opts.UseSqlServer(connectionString)); //ToDo: Pendiente enviar parametros
 
+            services.AddTransient<IParser, Parser>();
             services.AddTransient<IUsuarioDataSource, UsuarioDataSource>();
 
             return services;

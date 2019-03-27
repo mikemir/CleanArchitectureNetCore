@@ -1,7 +1,7 @@
 ﻿using CleanArchitecture.NetCore.Application.WebApi.Controllers;
-using CleanArchitecture.NetCore.Application.WebApi.Models.Users.Requests;
 using CleanArchitecture.NetCore.Dtos;
-using CleanArchitecture.NetCore.Dtos.Response;
+using CleanArchitecture.NetCore.Dtos.Requests;
+using CleanArchitecture.NetCore.Dtos.Responses;
 using CleanArchitecture.NetCore.InterfaceAdapters.Gateways;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -19,7 +19,7 @@ namespace CleanArchitecture.NetCore.UnitTests.Infraestructure.Application
         public void CuandoHagoUnPostExitosoConUsuario()
         {
             //Arrange
-            var usuario = new UsuarioRequest { Usuario = "", Clave = "" };
+            var usuario = new UsuarioRequest { Alias = "", Clave = "" };
 
             var response = new ResponseMessage(true, "Ingresado con éxito.");
             var fakeGateway = new Mock<IUsuarioGateway>();
