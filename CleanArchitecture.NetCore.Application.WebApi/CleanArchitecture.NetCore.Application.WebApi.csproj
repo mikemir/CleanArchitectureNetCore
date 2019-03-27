@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CleanArchitecture.NetCore.Configuration\CleanArchitecture.NetCore.Configuration.csproj" />
+    <ProjectReference Include="..\CleanArchitecture.NetCore.Infrastructure\CleanArchitecture.NetCore.Infrastructure.csproj" />
     <ProjectReference Include="..\CleanArchitecture.NetCore.InterfaceAdapters\CleanArchitecture.NetCore.InterfaceAdapters.csproj" />
   </ItemGroup>
 

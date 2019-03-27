@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanArchitecture.NetCore.Dtos
+namespace CleanArchitecture.NetCore.Domain
 {
-    public class UsuarioDto
+    public class Usuario
     {
         public string Alias { get; set; }
         public string Clave { get; set; }

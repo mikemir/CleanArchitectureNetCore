@@ -23,7 +23,7 @@ namespace CleanArchitecture.NetCore.UnitTests.Infraestructure.Application
 
             var response = new ResponseMessage(true, "Ingresado con éxito.");
             var fakeGateway = new Mock<IUsuarioGateway>();
-            fakeGateway.Setup(gate => gate.CrearUsuario(It.IsAny<UsuarioDto>()))
+            fakeGateway.Setup(fake => fake.CrearUsuario(It.IsAny<UsuarioDto>()))
                        .Returns(response);
 
             var controller = new UsersController(fakeGateway.Object);

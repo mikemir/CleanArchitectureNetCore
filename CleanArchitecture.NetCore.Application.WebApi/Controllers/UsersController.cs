@@ -40,7 +40,7 @@ namespace CleanArchitecture.NetCore.Application.WebApi.Controllers
             ActionResult result = null;
             if (!ModelState.IsValid) BadRequest(usuario);
 
-            var dto = new UsuarioDto { Usuario = usuario.Usuario, Clave = usuario.Clave };
+            var dto = new UsuarioDto { Alias = usuario.Usuario, Clave = usuario.Clave };
             var response =_usuarioGateway.CrearUsuario(dto);
 
             result = response.Success 
