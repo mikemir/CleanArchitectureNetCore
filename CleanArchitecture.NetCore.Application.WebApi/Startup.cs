@@ -26,7 +26,8 @@ namespace CleanArchitecture.NetCore.Application.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigInterfaceAdapters()
+            services.ConfigInfrastructure()
+                    .ConfigInterfaceAdapters()
                     .ConfigUseCases();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

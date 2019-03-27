@@ -5,13 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataSources\" />
     <Folder Include="Queues\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CleanArchitecture.NetCore.Dtos\CleanArchitecture.NetCore.Dtos.csproj" />
+    <ProjectReference Include="..\CleanArchitecture.NetCore.InterfaceAdapters\CleanArchitecture.NetCore.InterfaceAdapters.csproj" />
   </ItemGroup>
 
 </Project>
