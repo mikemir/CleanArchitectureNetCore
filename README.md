@@ -19,3 +19,6 @@ INSERT INTO dbo.USUARIOS (Alias, Clave)
 VALUES ('mikemir', 'Clav3!');
 ```
 
+Luego correr el Proyecto: `CleanArchitecture.NetCore.Application.WebApi`
+
+>**Nota:** Debes poner el proyecto como proyecto de inicio.
