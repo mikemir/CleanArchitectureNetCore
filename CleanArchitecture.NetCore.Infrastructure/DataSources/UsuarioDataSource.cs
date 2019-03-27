@@ -24,11 +24,8 @@ namespace CleanArchitecture.NetCore.Infrastructure.DataSources
             var result = false;
             var entity = _parser.Parse<UsuarioEntity, Usuario>(usuario);
 
-            using (_dbContext)
-            {
-                _dbContext.Usuarios.Add(entity);
-                result = _dbContext.SaveChanges() == 1;
-            }
+            _dbContext.Usuarios.Add(entity);
+            result = _dbContext.SaveChanges() == 1;
 
             return result;
         }

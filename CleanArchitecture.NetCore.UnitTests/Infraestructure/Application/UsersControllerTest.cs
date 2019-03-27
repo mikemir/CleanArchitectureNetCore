@@ -3,6 +3,7 @@ using CleanArchitecture.NetCore.Dtos;
 using CleanArchitecture.NetCore.Dtos.Requests;
 using CleanArchitecture.NetCore.Dtos.Responses;
 using CleanArchitecture.NetCore.InterfaceAdapters.Gateways;
+using CleanArchitecture.NetCore.InterfaceAdapters.Mapping;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
@@ -26,7 +27,11 @@ namespace CleanArchitecture.NetCore.UnitTests.Infraestructure.Application
             fakeGateway.Setup(fake => fake.CrearUsuario(It.IsAny<UsuarioDto>()))
                        .Returns(response);
 
-            var controller = new UsersController(fakeGateway.Object);
+            var fakeMapper = new Mock<IParser>();
+            fakeMapper.Setup(map => map.Parse<UsuarioDto, UsuarioRequest>(It.IsAny<UsuarioRequest>()))
+                       .Returns(new UsuarioDto { Alias = usuario.Alias, Clave = usuario.Clave });
+
+            var controller = new UsersController(fakeGateway.Object, fakeMapper.Object);
 
             //Act
             var result = controller.Post(usuario);
